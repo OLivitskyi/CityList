@@ -3,6 +3,8 @@ package com.olivitskyi.cityList.controllers;
 import com.olivitskyi.cityList.entity.City;
 import com.olivitskyi.cityList.services.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,14 +16,15 @@ public class CityController {
     private CityService cityService;
 
     @GetMapping
-    public List<City> findAll() {
-        return cityService.findAll();
+    public Page<City> findAll(Pageable pageable) {
+        return cityService.findAll(pageable);
     }
 
-    @GetMapping("/{id}")
-    public City findById(@PathVariable Long id) {
-        return cityService.findById(id);
+    @GetMapping("/search")
+    public Page<City> findByName(@RequestParam String name, Pageable pageable) {
+        return cityService.findByName(name, pageable);
     }
+
 
     @PostMapping
     public City save(@RequestBody City city) {
