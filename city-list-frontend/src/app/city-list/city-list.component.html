@@ -1,0 +1,8 @@
+<div>
+  <mat-list>
+    <mat-list-item *ngFor="let city of cities">
+      <img matListAvatar [src]="city.photo" alt="{{city.name}}">
+      <h3 matLine>{{ city.name }}</h3>
+    </mat-list-item>
+  </mat-list>
+</div>

@@ -1,0 +1,20 @@
+<div>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Edit City</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form>
+        <mat-form-field>
+          <input [(ngModel)]="city.name" name="name" matInput placeholder="City Name">
+        </mat-form-field>
+        <mat-form-field>
+          <input [(ngModel)]="city.photo" name="photo" matInput placeholder="City Photo URL">
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
