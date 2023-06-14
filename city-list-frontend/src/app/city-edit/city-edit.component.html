@@ -11,6 +11,10 @@
         <mat-form-field>
           <input [(ngModel)]="city.photo" name="photo" matInput placeholder="City Photo URL">
         </mat-form-field>
+        <mat-form-field>
+          <mat-label>Photo URL</mat-label>
+          <input matInput [(ngModel)]="city.photo" name="photo">
+        </mat-form-field>
       </form>
     </mat-card-content>
     <mat-card-actions>

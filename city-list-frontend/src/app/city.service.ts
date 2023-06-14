@@ -1,34 +1,43 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { City } from './city';
+import { Page } from './page';
 
 @Injectable({
 providedIn: 'root'
 })
 export class CityService {
-private citiesUrl: string;
+private baseUrl = 'http://localhost:8080/api/cities';
 
 constructor(private http: HttpClient) {
-this.citiesUrl = 'http://localhost:8080/api/cities';
 }
-
+findById(id: number): Observable<City> {
+return this.http.get<City>(`${this.baseUrl}/${id}`);
+}
 public findAll(page: number = 0, size: number = 10): Observable<any> {
-return this.http.get<any>(`${this.citiesUrl}?page=${page}&size=${size}`);
+return this.http.get<any>(`${this.baseUrl}?page=${page}&size=${size}`);
 }
 public get(id: number): Observable<City> {
-return this.http.get<City>(`${this.citiesUrl}/${id}`);
+return this.http.get<City>(`${this.baseUrl}/${id}`);
 }
 
-public save(city: City) {
-return this.http.post<City>(this.citiesUrl, city);
+save(city: City): Observable<City> {
+return this.http.post<City>(this.baseUrl, city);
 }
 
-public update(city: City) {
-return this.http.put<City>(`${this.citiesUrl}/${city.id}`, city);
+update(city: City): Observable<City> {
+return this.http.put<City>(`${this.baseUrl}/${city.id}`, city);
 }
 
-public delete(id: number) {
-return this.http.delete(`${this.citiesUrl}/${id}`);
+searchByName(name: string, page: number, size: number): Observable<Page<City>> {
+const params = new HttpParams()
+.set('name', name)
+.set('page', String(page))
+.set('size', String(size));
+return this.http.get<Page<City>>(`${this.baseUrl}/search`, { params });
+}
+delete(id: number): Observable<any> {
+return this.http.delete(`${this.baseUrl}/${id}`);
 }
 }
