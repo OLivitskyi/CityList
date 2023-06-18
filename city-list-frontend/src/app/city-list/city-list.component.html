@@ -1,15 +1,25 @@
-<div>
-  <mat-list>
-    <mat-list-item *ngFor="let city of cities">
-      <img matListAvatar [src]="city.photo" alt="{{city.name}}">
-      <h3 matLine>{{ city.name }}</h3>
-      <button mat-icon-button [routerLink]="['/edit', city.id]" *ngIf="authService.hasRole('ROLE_ALLOW_EDIT')">
-        <mat-icon>edit</mat-icon>
-      </button>
-    </mat-list-item>
-  </mat-list>
-</div>
+<!-- Search input -->
 <div>
   <input [(ngModel)]="searchTerm" placeholder="Search by name">
   <button (click)="onSearch()">Search</button>
+</div>
+
+<!-- List of cities -->
+<div class="city-list">
+  <div *ngFor="let city of cities" class="city-item">
+    <img [src]="city.photo" alt="{{city.name}}">
+    <h3>{{ city.name }}</h3>
+    <button mat-icon-button [routerLink]="['/edit', city.id]" *ngIf="authService.hasRole('ROLE_ALLOW_EDIT')">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+</div>
+
+<!-- Paginator -->
+<div>
+  <mat-paginator
+    [length]="totalElements"
+    [pageSize]="size"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    (page)="onPageChange($event)"></mat-paginator>
 </div>

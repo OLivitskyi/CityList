@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { City } from '../city';
 import { CityService } from '../city.service';
 import { AuthService } from '../auth.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
 selector: 'app-city-list',
 templateUrl: './city-list.component.html',
-styleUrls: []
+styleUrls: [],
 })
 export class CityListComponent implements OnInit {
 cities: City[] = [];
@@ -15,7 +16,7 @@ page: number = 0;
 size: number = 10;
 totalElements: number = 0;
 
-constructor(public cityService: CityService, public authService: AuthService) { }
+constructor(public cityService: CityService, public authService: AuthService) {}
 
 ngOnInit() {
 this.loadCities();
@@ -23,18 +24,22 @@ this.loadCities();
 
 loadCities() {
 if (this.searchTerm) {
-this.cityService.searchByName(this.searchTerm, this.page, this.size).subscribe(data => {
+this.cityService.searchByName(this.searchTerm, this.page, this.size).subscribe((data) => {
 this.cities = data.content;
 this.totalElements = data.totalElements;
 });
 } else {
-this.cityService.findAll(this.page, this.size).subscribe(data => {
+this.cityService.findAll(this.page, this.size).subscribe((data) => {
 this.cities = data.content;
 this.totalElements = data.totalElements;
 });
 }
 }
-
+onPageChange(event: PageEvent): void {
+this.page = event.pageIndex;
+this.size = event.pageSize;
+this.loadCities();
+}
 onSearch() {
 this.loadCities();
 }

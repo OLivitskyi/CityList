@@ -1,0 +1,12 @@
+.city-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.city-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 16px;
+}

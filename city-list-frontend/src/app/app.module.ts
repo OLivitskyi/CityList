@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CityListComponent } from './city-list/city-list.component';
@@ -35,6 +35,7 @@ MatIconModule,
 MatButtonModule,
 MatToolbarModule,
 MatListModule,
+MatPaginatorModule,
 MatCardModule,
 AppRoutingModule,
 ],
