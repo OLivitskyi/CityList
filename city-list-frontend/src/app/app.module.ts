@@ -9,17 +9,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
-import { RouterModule } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CityListComponent } from './city-list/city-list.component';
+import { CityEditComponent } from './city-edit/city-edit.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
 declarations: [
 AppComponent,
 LoginComponent,
-CityListComponent
+CityListComponent,
+CityEditComponent,
 ],
 imports: [
 BrowserModule,
@@ -32,9 +35,10 @@ MatIconModule,
 MatButtonModule,
 MatToolbarModule,
 MatListModule,
-RouterModule.forRoot([])
+MatCardModule,
+AppRoutingModule,
 ],
 providers: [],
-bootstrap: [AppComponent]
+bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
-  City List
+  <span>City List</span>
   <span class="spacer"></span>
-  <a mat-button routerLink="/login">Login</a>
+  <button mat-button *ngIf="!authService.isAuthenticated()" [routerLink]="['/login']">Login</button>
+  <button mat-button *ngIf="authService.isAuthenticated()" [routerLink]="['/login']">Logout</button>
 </mat-toolbar>
-
-<app-city-list></app-city-list>
+<router-outlet></router-outlet>
