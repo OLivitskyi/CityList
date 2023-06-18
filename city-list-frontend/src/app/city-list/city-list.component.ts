@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { City } from '../city';
 import { CityService } from '../city.service';
+import { AuthService } from '../auth.service';
 
 @Component({
 selector: 'app-city-list',
@@ -14,7 +15,7 @@ page: number = 0;
 size: number = 10;
 totalElements: number = 0;
 
-constructor(private cityService: CityService) { }
+constructor(public cityService: CityService, public authService: AuthService) { }
 
 ngOnInit() {
 this.loadCities();

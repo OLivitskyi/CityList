@@ -1,37 +1,38 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
-import { MatListModule } from '@angular/material/list';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
 import { CityListComponent } from './city-list/city-list.component';
-import { CityEditComponent } from './city-edit/city-edit.component';
-import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
 declarations: [
 AppComponent,
-CityListComponent,
-CityEditComponent
+LoginComponent,
+CityListComponent
 ],
 imports: [
-AppRoutingModule,
-FormsModule,
 BrowserModule,
-BrowserAnimationsModule,
+FormsModule,
 HttpClientModule,
-MatButtonModule,
-MatCardModule,
+BrowserAnimationsModule,
 MatInputModule,
+MatFormFieldModule,
+MatIconModule,
+MatButtonModule,
+MatToolbarModule,
 MatListModule,
-MatToolbarModule
+RouterModule.forRoot([])
 ],
 providers: [],
 bootstrap: [AppComponent]
