@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
 { path: 'city-list', component: CityListComponent },
-{ path: 'city-edit', component: CityEditComponent },
+{ path: 'city-edit/:id', component: CityEditComponent }, // Keep only this route with the :id parameter
 { path: '', redirectTo: 'login', pathMatch: 'full' },
 { path: 'login', component: LoginComponent },
 ];

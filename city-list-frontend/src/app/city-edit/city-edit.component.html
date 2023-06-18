@@ -4,21 +4,18 @@
       <mat-card-title>Edit City</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form>
+      <form (ngSubmit)="onSubmit()" #cityForm="ngForm">
         <mat-form-field>
-          <input [(ngModel)]="city.name" name="name" matInput placeholder="City Name">
+          <input [(ngModel)]="city.name" name="name" matInput placeholder="City Name" required>
         </mat-form-field>
         <mat-form-field>
-          <input [(ngModel)]="city.photo" name="photo" matInput placeholder="City Photo URL">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Photo URL</mat-label>
-          <input matInput [(ngModel)]="city.photo" name="photo">
+          <mat-label>City Photo URL</mat-label>
+          <input matInput [(ngModel)]="city.photo" name="photo" required>
         </mat-form-field>
       </form>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!cityForm.form.valid">Save</button>
     </mat-card-actions>
   </mat-card>
 </div>

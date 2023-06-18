@@ -7,7 +7,7 @@ import { PageEvent } from '@angular/material/paginator';
 @Component({
 selector: 'app-city-list',
 templateUrl: './city-list.component.html',
-styleUrls: [],
+styleUrls: ['./city-list.component.css'],
 })
 export class CityListComponent implements OnInit {
 cities: City[] = [];

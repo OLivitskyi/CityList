@@ -6,7 +6,7 @@ import { CityService } from '../city.service';
 @Component({
 selector: 'app-city-edit',
 templateUrl: './city-edit.component.html',
-styleUrls: []
+styleUrls: ['./city-edit.component.css'],
 })
 export class CityEditComponent implements OnInit {
 city: City;
@@ -20,7 +20,7 @@ this.city = { id: 0, name: '', photo: '' };
 }
 
 ngOnInit() {
-this.route.params.subscribe(params => {
+this.route.params.subscribe((params) => {
 const id = params['id'];
 if (id) {
 this.cityService.get(id).subscribe((city: City) => {
@@ -36,7 +36,7 @@ this.gotoList();
 }
 
 onSubmit() {
-this.cityService.save(this.city).subscribe(result => this.gotoList());
+this.cityService.save(this.city).subscribe((result) => this.gotoList());
 }
 
 gotoList() {
